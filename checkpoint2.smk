@@ -4,7 +4,15 @@ rule all:
     input:
         "d.txt"
 
+'''
 checkpoint a:  # <-- change to rule to not have the error anymore
+    output:
+        'a.txt'
+    shell:
+        "touch {output}"
+'''
+
+rule a:  # <-- change to rule to not have the error anymore
     output:
         'a.txt'
     shell:
