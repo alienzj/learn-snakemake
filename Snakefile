@@ -6,4 +6,4 @@ include: "hello.smk"
 
 rule all:
     input:
-        "output/hello.txt"
+        expand("output/{i}.txt", i=["0", "1", "2", "3"])
