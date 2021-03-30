@@ -68,6 +68,7 @@ rule scan_output:
         echo {params.batchid} >> {output}
         '''
 
+
 def aggregate_scan_output(wildcards):
     checkpoint_output = checkpoints.prepare_output.get(**wildcards).output[0]
 
@@ -75,8 +76,10 @@ def aggregate_scan_output(wildcards):
                   asmer=wildcards.asmer,
                   binner=wildcards.binner,
                   batchid=sorted(list(set([i.split("/")[0] \
-                                    for i in glob_wildcards(os.path.join(checkpoint_output,
-                                                                         "bins_{batchid}")).batchid]))))
+                                           for i in glob_wildcards(os.path.join(
+                                                   checkpoint_output,
+                                                   "bins_{batchid}")).batchid]))))
+
 
 rule scan_report:
     input:
@@ -87,6 +90,7 @@ rule scan_report:
         '''
         cat {input} > {output}
         '''
+
 
 rule all:
     input:
